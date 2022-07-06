@@ -1,4 +1,7 @@
 
+# this script will check CPU utlization on the instances
+
+# import files
 
 import sys
 import subprocess

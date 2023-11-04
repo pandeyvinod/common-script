@@ -68,9 +68,6 @@ def get_ssm_param():
 
     return api_key, endpoint_url
 
-api_key, endpoint_url = get_ssm_param()
-print("FROM SSM", api_key,endpoint_url)
-
 def write_config_to_file(api_key, endpoint_url):
     data = {
         'NEWRELIC_API_KEY': api_key,
@@ -79,10 +76,6 @@ def write_config_to_file(api_key, endpoint_url):
 
     with open('config.json','w') as file:
         json.dump(data,file)
-
-write_config_to_file()
-print('config.json')
-
 
 if not os.path.exists('config.json'):
     api_key, endpoint_url = get_ssm_param()
@@ -93,6 +86,4 @@ else:
         api_key = data['API_KEY']
         endpoint_url = data['ENDPOINT_URL']
 
-print("API Key:", api_key)
-print("Endpoint URL:", endpoint_url)
 
